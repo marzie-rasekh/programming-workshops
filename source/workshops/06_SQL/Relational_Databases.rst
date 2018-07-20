@@ -1,7 +1,7 @@
 .. _linux_bash:
 
 ====================================================
-An Introduction to Relational Detabases
+Relational Databases
 ====================================================
 
 
