@@ -14,8 +14,8 @@ Welcome to the BRITE-REU Programming Workshop!
    Workshop 2: SCC and git  <workshops/02_scc_git/index>
    Workshop 3: Python <workshops/03_python/index>
    Workshop 4: R <workshops/04_R/index>
-   Workshop 5: Machine learning <workshops/06_SQL/index>
    Workshop 6: SQL <workshops/06_SQL/index>
+   Workshop 6: SQL test <workshops/06_SQL_test/index>
 
 
 .. note:: This is a Work In Progress and is actively being updated.
