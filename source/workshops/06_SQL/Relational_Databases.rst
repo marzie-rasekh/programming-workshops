@@ -1,7 +1,7 @@
 .. _linux_bash:
 
 ====================================================
-Workshop 6: An Introduction to Relational Detabases
+An Introduction to Relational Detabases
 ====================================================
 
 
@@ -108,7 +108,7 @@ The fields are:
 
 Movies typically have more than one actor, so the cast table will typically have more than one row for the same movie, each with a different actor.  For example, the movie "Wonder Woman" has the following row in the movies table:
 
-.. code:: SQL
+.. code:: 
 
     mid         title         year        genres                  
     ----------  ------------  ----------  ------------------------
@@ -117,7 +117,7 @@ Movies typically have more than one actor, so the cast table will typically have
 
 **Note** the movie row identifier mid = 451279.  In order to tie the movies to its actors, the same identifier, is used in the cast table.
 
-.. code:: SQL
+.. code:: 
 
     mid         aid         role                          
     ----------  ----------  ------------------------------
@@ -129,7 +129,7 @@ Movies typically have more than one actor, so the cast table will typically have
 
 Who are these actors?  The only way to find out is to go to the actors table and look for the rows with the corresponding aid identifiers.
 
-.. code:: SQL
+.. code:: 
 
     aid         name                
     ----------  --------------------
@@ -179,17 +179,18 @@ Data is queried with SQL query statements.  These statements have the following 
 
 The following example lists the first ten sci-fi movies from 2017 whose titles start with "star".  Note that like is used for string matching and that "%" stands for zero or more "I don't care" characters.  So this means that sci-fi occurs somewhere in the genres field.  
  
-sqlite> select title, year, genres 
-   ...> from movies
-   ...> where year = 2017 and title like "star%" and genres like "%sci-fi%"
-   ...> limit 10;
+.. code:: SQL
+	
+	sqlite> select title, year, genres 
+	   ...> from movies
+	   ...> where year = 2017 and title like "star%" and genres like "%sci-fi%"
+	   ...> limit 10;
 
 ******************
 Joins
 ******************
 
 When you want to combine data from different tables, joins are used.  This is how to retrieve information on both actors and movies in the same query.  Joins occur in the FROM clause.  All the tables required are listed and the columns that should be used to join the rows are specified.  Recall the diagram from above.  Now it's labeled with the columns that join the entity and relationship tables.
-
 
 
 Going back to the Wonder Woman example.  Here is a query that returns the actors by looking for the movie name.  The results are shown after the query.
@@ -201,7 +202,7 @@ Going back to the Wonder Woman example.  Here is a query that returns the actors
        ...> where title like "wonder woman";
 
 
-.. code:: SQL
+.. code:: 
 
     mid         title         aid         name        role                
     ----------  ------------  ----------  ----------  --------------------
@@ -221,7 +222,7 @@ Notice the joins in the from clause.   The first one is
 This indicates that rows from movie should be combined with rows from cast when they share the same mid value.  In effect, this produces an intermediate table with the following rows: mid, title, aid, role as can be seen in the following query.
 sqlite> select * from movies join cast using (mid) limit 10;
 
-.. code:: SQL
+.. code:: 
 
     mid     title           year  genres      aid       role          
     ------  --------------  ----  ----------  --------  --------------
@@ -245,10 +246,13 @@ The second join is
     
 
 where X is the result of the first join.   This indicates that rows from the first join should be combined with rows from actors when they share the same aid.  Again, this has the effect of producing an intermediate table with one additional field, name.  
-sqlite> select * from movies join cast using (mid) join actors using (aid) limit 10;
-
 
 .. code:: SQL
+	
+	sqlite> select * from movies join cast using (mid) join actors using (aid) limit 10;
+
+
+.. code:: 
 
     mid     title           year  genres      aid       role            name                
     ------  --------------  ----  ----------  --------  --------------  --------------------
@@ -290,7 +294,10 @@ Starting and stopping sqlite.
 
 The following starts sqlite and creates a database file or uses a file if it already exists.  Note that I'm using "%" as an arbitrary symbol for your system prompt.
 
-%sqlite3 mydatabase.db
+.. code:: SQL
+	
+	%sqlite3 mydatabase.db
+
 
 The following stops sqlite.  Note that "sqlite>" is the sqlite prompt.
 
@@ -298,11 +305,13 @@ The following stops sqlite.  Note that "sqlite>" is the sqlite prompt.
 
     sqlite> .quit
 
+
 Create a file "create.txt" with the CREATE TABLE statements for movie, actor, and cast.  Use .read to read in and execute the statements in sqlite.
 
 .. code:: SQL
 
    sqlite> .read create.txt
+
 
 Use .schema to see that all the tables were created.  This will list the CREATE TABLE statements.
 
@@ -328,6 +337,7 @@ Confirm that data has been loaded into each table using commands like the follow
 	sqlite> .mode column
 	sqlite> .headers on
 	sqlite> select * from movies limit 10;
+	
 
 Note that if you get the continuation symbol  ...> it means you hit return before the command was complete.  Either continue typing or add a missing semicolon (;) at the end. 
 
@@ -335,6 +345,7 @@ Note that if you get the continuation symbol  ...> it means you hit return befor
 
 	sqlite> select * from movies limit 10
    	...>; 
+	
 
 Confirm the number of rows of data in the table. select count(*)means count the number of rows in the table.
 
