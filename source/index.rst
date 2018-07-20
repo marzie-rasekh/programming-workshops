@@ -6,6 +6,8 @@
 Welcome to the BRITE-REU Programming Workshop!
 ===========================================================
 
+ARE YOU SEEING ME
+
 .. toctree::
    :maxdepth: 1
 
