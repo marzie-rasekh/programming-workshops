@@ -36,7 +36,7 @@ The data in a row is divided into fields.  Each field holds a particular piece o
 - genres – a list of classification labels for the movie content, stored as a text string
 
 The primary key notation on the mid field indicates that the data will be sorted for fast lookup on this field.  
-The following are a few rows of data from the movies table.   This data comes from the publicly available IMDb (Internet Movie Database) at `https://www.imdb.com/interfaces/<https://www.imdb.com/interfaces/>`_.
+The following are a few rows of data from the movies table.   This data comes from the publicly available IMDb (Internet Movie Database) at `https://www.imdb.com/interfaces/ <https://www.imdb.com/interfaces/>`_ .
 
 .. code:: 
 
